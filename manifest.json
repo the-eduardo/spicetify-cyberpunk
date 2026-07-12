@@ -1,7 +1,7 @@
 [
   {
-    "name": "Lucid",
-    "description": "A modern, customizable Spicetify theme inspired by Bloom and Microsoft's Fluent Design System.",
+    "name": "Cyberpunk",
+    "description": "Cyberpunk Edgerunners theme for Spicetify — Night City neon palette on top of Lucid. Fork of sanoojes/spicetify-lucid.",
     "preview": "https://glcdn.githack.com/sanoojes/spicetify-lucid/raw/main/assets/images/base.png",
     "readme": "https://glcdn.githack.com/sanoojes/spicetify-lucid/raw/main/README.md",
     "usercss": "https://spicetify-lucid.sanooj.uk/spice/user.css",

@@ -1,0 +1,78 @@
+/* ========== Cyberpunk (Edgerunners) neon layer ==========
+   Active only while the Cyberpunk color mode sets the [cyberpunk]
+   attribute on <html>. Palette tokens come from getCyberpunkColors.ts;
+   this file only adds typography, glow and neon accents on top. */
+
+:root[cyberpunk] {
+  --encore-body-font-stack: "Rajdhani", "SpotifyMixUI", var(--fallback-fonts, sans-serif);
+  --encore-title-font-stack: "Orbitron", "SpotifyMixUITitle", var(--fallback-fonts, sans-serif);
+  --encore-variable-font-stack: "Rajdhani", "SpotifyMixUITitleVariable",
+    var(--fallback-fonts, sans-serif);
+
+  --border-clr: rgba(42, 20, 80, 0.9);
+  --border-h-clr: rgba(252, 238, 10, 0.55);
+}
+
+:root[cyberpunk] ::selection {
+  background: rgba(255, 42, 109, 0.45);
+  color: #fff;
+}
+
+:root[cyberpunk] * {
+  scrollbar-color: rgba(252, 238, 10, 0.4) transparent;
+}
+
+:root[cyberpunk] ::-webkit-scrollbar-thumb {
+  background-color: rgba(252, 238, 10, 0.4);
+}
+
+:root[cyberpunk] ::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(252, 238, 10, 0.7);
+}
+
+/* Track title — signature yellow glow */
+:root[cyberpunk] .main-trackInfo-name {
+  text-shadow: 0 0 24px rgba(252, 238, 10, 0.35);
+}
+
+/* Links and artist names — cyan glow on hover */
+:root[cyberpunk] .main-trackInfo-artists a:hover,
+:root[cyberpunk] .main-entityHeader-title:hover,
+:root[cyberpunk] a:hover {
+  text-shadow: 0 0 8px rgba(0, 240, 255, 0.55);
+}
+
+/* Primary (play) buttons — neon halo */
+:root[cyberpunk] .e-9890-button-primary,
+:root[cyberpunk] .main-playButton-PlayButton > button {
+  box-shadow: 0 0 16px rgba(252, 238, 10, 0.35);
+  transition: box-shadow 225ms ease-in-out;
+}
+
+:root[cyberpunk] .e-9890-button-primary:hover,
+:root[cyberpunk] .main-playButton-PlayButton > button:hover {
+  box-shadow: 0 0 28px rgba(252, 238, 10, 0.6);
+}
+
+/* Active nav / generic buttons already colored --clr-primary by colors.css;
+   add a soft glow so they read as lit signage */
+:root[cyberpunk] .main-genericButton-button.main-genericButton-buttonActive {
+  text-shadow: 0 0 12px rgba(252, 238, 10, 0.5);
+}
+
+/* Now playing bar — thin neon top edge */
+:root[cyberpunk] .Root__now-playing-bar {
+  border-top: 1px solid rgba(252, 238, 10, 0.25);
+  box-shadow: 0 -1px 12px rgba(176, 38, 255, 0.15);
+}
+
+/* Cards — chrome purple borders that light up */
+:root[cyberpunk] .main-card-card {
+  border: 1px solid rgba(42, 20, 80, 0.6);
+  transition: border-color 225ms ease-in-out, box-shadow 225ms ease-in-out;
+}
+
+:root[cyberpunk] .main-card-card:hover {
+  border-color: rgba(252, 238, 10, 0.45);
+  box-shadow: 0 0 18px rgba(252, 238, 10, 0.12);
+}

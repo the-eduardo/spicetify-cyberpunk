@@ -4,7 +4,7 @@ import svgrPlugin from "esbuild-plugin-svgr";
 
 // Learn more: https://gitlab.com/sanoojes/spicetify-creator
 export default defineConfig({
-  name: "Lucid",
+  name: "Cyberpunk",
   framework: "react",
   linter: "oxlint",
   template: "theme",

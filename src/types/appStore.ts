@@ -3,7 +3,7 @@ type Stringify<T extends string> = T | (string & {}); // just to trick the compi
 
 type Color = string;
 export type ColorState = {
-  mode: Stringify<"default" | "dynamic" | "custom">;
+  mode: Stringify<"default" | "dynamic" | "custom" | "cyberpunk">;
   accentColor: Color;
   isTinted: boolean;
   isDark: boolean;

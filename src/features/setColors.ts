@@ -1,7 +1,16 @@
 import appStore from "@/store/appStore.ts";
 import tempStore from "@/store/tempStore.ts";
+import getCyberpunkColors from "@/utils/colors/getCyberpunkColors.ts";
 import getMaterialColors from "@/utils/colors/getMaterialColors.ts";
 import getOrCreateStyle from "@/utils/dom/getOrCreateStyle.ts";
+
+const CYBERPUNK_FONTS_URL =
+  "https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;500;600;700&display=swap";
+
+function setCyberpunkFonts(enabled: boolean) {
+  const style = getOrCreateStyle("cyberpunk-fonts");
+  style.textContent = enabled ? `@import url("${CYBERPUNK_FONTS_URL}");` : "";
+}
 
 const DEFAULT_ACCENT_COLOR = "#1ed760";
 const MAX_CACHE_SIZE = 10;
@@ -12,8 +21,12 @@ const colorCache: Map<string, string> = new Map();
 export default function setColors() {
   const { mode, isDark, isTinted, accentColor } = appStore.getState().color;
 
-  document.documentElement.setAttribute("theme", isDark ? "dark" : "light");
-  document.body.setAttribute("theme", isDark ? "dark" : "light");
+  const isCyberpunk = mode === "cyberpunk";
+
+  document.documentElement.setAttribute("theme", isCyberpunk || isDark ? "dark" : "light");
+  document.body.setAttribute("theme", isCyberpunk || isDark ? "dark" : "light");
+  document.documentElement.toggleAttribute("cyberpunk", isCyberpunk);
+  setCyberpunkFonts(isCyberpunk);
 
   let color = DEFAULT_ACCENT_COLOR;
   if (mode === "custom") {
@@ -22,12 +35,14 @@ export default function setColors() {
     color = tempStore.getState().player?.current?.colors?.colorRaw?.hex ?? DEFAULT_ACCENT_COLOR;
   }
 
-  const cacheKey = `${color}-${isDark ? "dark" : "light"}-${isTinted ? "tint" : "no-tint"}`;
+  const cacheKey = isCyberpunk
+    ? "cyberpunk"
+    : `${color}-${isDark ? "dark" : "light"}-${isTinted ? "tint" : "no-tint"}`;
   if (cacheKey === lastCacheKey) {
     return;
   }
 
-  const css = getCachedColorCSS(color, isDark, isTinted);
+  const css = isCyberpunk ? getCyberpunkColors() : getCachedColorCSS(color, isDark, isTinted);
   lastCacheKey = cacheKey;
 
   const style = getOrCreateStyle("lucid-colors");

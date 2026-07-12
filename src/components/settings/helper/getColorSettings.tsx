@@ -29,6 +29,9 @@ export const getColorSettings = (state: ReturnType<typeof appStore.getState>): S
                 <p>
                   <strong>Custom:</strong> Pick your own accent color.
                 </p>
+                <p>
+                  <strong>Cyberpunk:</strong> Night City neon — fixed Edgerunners palette.
+                </p>
               </div>
             ),
             value: color.mode,
@@ -36,6 +39,7 @@ export const getColorSettings = (state: ReturnType<typeof appStore.getState>): S
               ["Default", "default"],
               ["Dynamic", "dynamic"],
               ["Custom", "custom"],
+              ["Cyberpunk", "cyberpunk"],
             ],
             onChange: (mode) => state.setColor({ mode }),
           },

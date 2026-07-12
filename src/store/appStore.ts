@@ -32,10 +32,10 @@ const PLAYER_BG_FILTER = {
 
 export const DEFAULT_STATE: AppState = {
   color: {
-    mode: "dynamic",
+    mode: "cyberpunk",
     isDark: true,
     isTinted: true,
-    accentColor: "#6200ee",
+    accentColor: "#fcee0a",
   },
   bg: {
     mode: "static",
