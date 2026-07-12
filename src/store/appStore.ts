@@ -317,8 +317,14 @@ const appStore = createStore<AppState & AppStateSetters>()(
     ),
     {
       name: "lucid:settings",
-      version: 1,
-      migrate: (persistedState) => merge(DEFAULT_STATE, persistedState ?? {}),
+      version: 2,
+      migrate: (persistedState, version) => {
+        const state = merge(DEFAULT_STATE, persistedState ?? {});
+        // v1 -> v2: settings carried over from stock Lucid; switch to the
+        // Cyberpunk palette once so the fork applies out of the box.
+        if (version < 2) state.color.mode = "cyberpunk";
+        return state;
+      },
     },
   ),
 );

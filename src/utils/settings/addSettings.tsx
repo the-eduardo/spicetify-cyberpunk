@@ -23,13 +23,13 @@ export const openModal = () => {
 
   // waitForGlobal(() => Spicetify?.PopupModal).then((modal) => {
   //   modal.display({
-  //     title: 'Lucid Settings',
+  //     title: 'Cyberpunk Settings',
   //     content: <Settings />,
   //     isLarge: true,
   //   });
   // });
 
-  showModal({ title: "Lucid Settings", content: <Settings /> });
+  showModal({ title: "Cyberpunk Settings", content: <Settings /> });
 };
 
 async function addSettings(position = appStore.getState().settingModal.accessPoint) {
@@ -43,7 +43,7 @@ async function addSettingsEntry(
 ) {
   if (
     position === "nav" &&
-    document.querySelector('.main-actionButtons button[aria-label="Lucid Settings"]')
+    document.querySelector('.main-actionButtons button[aria-label="Cyberpunk Settings"]')
   )
     return;
 
@@ -56,10 +56,10 @@ async function addSettingsEntry(
   const Topbar = await waitForGlobal(() => Spicetify.Topbar);
   if (position === "menu") {
     const Item = await waitForGlobal(() => Spicetify?.Menu?.Item);
-    settingsEntry = new Item("Lucid Settings", false, openModal, SETTINGS_ICON);
+    settingsEntry = new Item("Cyberpunk Settings", false, openModal, SETTINGS_ICON);
     settingsEntry.register();
   } else {
-    settingsEntry = new Topbar.Button("Lucid Settings", SETTINGS_ICON, openModal, false, true);
+    settingsEntry = new Topbar.Button("Cyberpunk Settings", SETTINGS_ICON, openModal, false, true);
   }
 }
 

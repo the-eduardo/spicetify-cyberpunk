@@ -42,10 +42,11 @@
   text-shadow: 0 0 8px rgba(0, 240, 255, 0.55);
 }
 
-/* Primary (play) buttons — neon halo */
-:root[cyberpunk] .e-9890-button-primary,
+/* Primary (play) buttons — neon halo on hover only. Never apply a
+   resting box-shadow here: Spotify keeps hidden play buttons in the DOM
+   as transparent boxes, and a resting shadow renders around them as
+   ghost squares. */
 :root[cyberpunk] .main-playButton-PlayButton > button {
-  box-shadow: 0 0 16px rgba(252, 238, 10, 0.35);
   transition: box-shadow 225ms ease-in-out;
 }
 
